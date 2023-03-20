@@ -1,0 +1,83 @@
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #e9ecef;
+}
+
+.background-img {
+  background-color: #741536;
+  height: 105vh;
+  background-image: linear-gradient(to top, #681331 0%, #000 100%);
+}
+
+.watchlist-box {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
+  padding: 2.4rem;
+  gap: 3.2rem;
+}
+
+.movie {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: rgba(222, 226, 230, 0.05);
+  position: relative;
+}
+
+.movie-img {
+  width: 100%;
+  height: auto;
+}
+
+.movie-title {
+  font-size: 3rem;
+  font-weight: 600;
+  padding-left: 2.4rem;
+  padding-top: 2.4rem;
+}
+
+.movie-icons {
+  display: flex;
+  justify-content: space-between;
+  gap: 3.2rem;
+  padding-left: 2.4rem;
+}
+
+.star-icon {
+  color: #fab005;
+}
+
+.title-icon {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+.movie-icons-text {
+  font-size: 1.4rem;
+  color: #adb5bd;
+}
+
+.watchlist-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  padding: 0.8rem;
+  transition: all 0.5s;
+}
+
+.watchlist-btn :hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.icon-bookmark {
+  height: 3rem;
+  width: 3rem;
+  color: #e9ecef;
+}
