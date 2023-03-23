@@ -65,8 +65,13 @@ body {
   border-bottom: 1px solid #dee2e6;
 }
 
+.movie-result:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
 .result-img {
-  width: 65%;
+  width: 35%;
   height: auto;
 }
 .result-title {
