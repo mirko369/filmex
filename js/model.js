@@ -7,12 +7,15 @@ export const state = {
     page: 1,
     resultsPerPage: RES_PER_PAGE,
   },
+  watchlist: [],
+  likes: [],
 };
 
 function createMovieData(data) {
   return {
-    rated: data.awards.split("|")[0],
-    awards: data.awards.split("|")[1],
+    rated: data.awards.includes("|") ? data.awards.split("|")[0] : undefined,
+    awards: data.awards.includes("|") ? data.awards.split("|")[1] : data.awards,
+    companies: data.companies,
     director: data.directors,
     genres: data.genres.split(","),
     id: data.id,
@@ -25,6 +28,8 @@ function createMovieData(data) {
     title: data.title,
     writer: data.writers,
     year: data.year,
+    like: state.likes.some(el => el.title === data.title) ? true : false,
+    watch: state.watchlist.some(el => el.title === data.title) ? true : false,
   };
 }
 
@@ -47,6 +52,7 @@ export async function loadMovie(id) {
       `https://imdb-api.com/en/API/Title/${KEY}/${id}`
     );
     const data = await promise.json();
+    console.log(data);
     state.movie = createMovieData(data);
     console.log(state.movie);
   } catch (err) {

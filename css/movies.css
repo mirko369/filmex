@@ -114,17 +114,18 @@ body {
 
 .movie-box {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: 2fr 1fr;
   position: relative;
 }
+
 .movie-info {
   padding: 2.2rem;
 }
 
 .movie-img {
   height: auto;
-  width: 100%;
+  width: 80%;
 }
 
 .movie-title {

@@ -85,3 +85,25 @@ body {
 .face-description-numbers {
   color: #ba8a9b;
 }
+
+/* 1248px */
+@media (max-width: 78em) {
+  html {
+    font-size: 56.25%;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 656px */
+@media (max-width: 41em) {
+  .nav {
+    display: none;
+  }
+
+  .btn-mobile-nav {
+    display: block;
+    z-index: 9999;
+  }
+}
