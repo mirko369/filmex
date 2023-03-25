@@ -7,14 +7,13 @@ body {
 
 .background-img {
   background-color: #741536;
-  height: 105vh;
+  height: 100vh;
   background-image: linear-gradient(to top, #681331 0%, #000 100%);
 }
 
 .watchlist-box {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr 1fr;
   padding: 2.4rem;
   gap: 3.2rem;
 }

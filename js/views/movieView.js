@@ -1,6 +1,5 @@
 class MovieView {
   _parentEl = document.querySelector(".movie-box");
-  _watchlistBtn = document.querySelector(".watchlist-btn");
 
   _generateMarkup(data) {
     let genre = "";
@@ -55,7 +54,9 @@ class MovieView {
 
         <div class="movie-like">
           <p class="like-text">Add to favorites to discover more movies like this one</p>
-          <button class="like-btn"><ion-icon class="icon-heart"name="heart"></ion-icon></button>
+          <button class="like-btn"><ion-icon class="icon-heart ${
+            data.like ? "liked" : ""
+          }"name="heart"></ion-icon></button>
         </div>
 
     </div>
@@ -70,14 +71,20 @@ class MovieView {
           data.companies
         }</p>
         <p class="movie-maker">
-          <span class="movie-maker-span">Writer:</span >${data.writer}</p>
+          <span class="movie-maker-span">Writer:</span >${
+            data.writer ? data.writer : "N/A"
+          }</p>
         <p class="movie-maker">
-          <span class="movie-maker-span">Director:</span >${data.director}</p>
+          <span class="movie-maker-span">Director:</span >${
+            data.director ? data.director : "N/A"
+          }</p>
         </div>
           <div class="watchlist">
             <p class="watchlist-text">Add to your watchlist</p>
             <button class="watchlist-btn">
-              <ion-icon class="icon-bookmark"name="bookmark"></ion-icon>
+              <ion-icon class="icon-bookmark ${
+                data.watch ? "watch" : ""
+              }"name="bookmark"></ion-icon>
             </button>
           </div>
         </div>
@@ -91,9 +98,19 @@ class MovieView {
   }
 
   addHandlerLike(handler) {
-    document.querySelector(".like-btn").addEventListener("click", function (e) {
+    document.querySelector(".like-btn").addEventListener("click", function () {
+      document.querySelector(".icon-heart").classList.toggle("liked");
       handler();
     });
+  }
+
+  addHandlerWatchlist(handler) {
+    document
+      .querySelector(".watchlist-btn")
+      .addEventListener("click", function () {
+        document.querySelector(".icon-bookmark").classList.toggle("watch");
+        handler();
+      });
   }
 }
 

@@ -71,6 +71,14 @@ html {
   gap: 0.5rem;
 }
 
+.liked {
+  color: #fa5252 !important;
+}
+
+.watch {
+  color: #212529 !important;
+}
+
 /* mobile nav */
 
 .btn-mobile-nav {

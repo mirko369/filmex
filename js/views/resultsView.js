@@ -18,7 +18,6 @@ class ResultsView {
   }
 
   renderResults(data) {
-    console.log(data);
     this._parentEl.innerHTML = "";
     data.forEach((el) => {
       this._parentEl.insertAdjacentHTML("beforeend", this._generateMarkup(el));

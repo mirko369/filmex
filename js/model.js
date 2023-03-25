@@ -28,8 +28,17 @@ function createMovieData(data) {
     title: data.title,
     writer: data.writers,
     year: data.year,
-    like: state.likes.some(el => el.title === data.title) ? true : false,
-    watch: state.watchlist.some(el => el.title === data.title) ? true : false,
+    like: state.likes.some((el) => el.title === data.title) ? true : false,
+    watch: state.watchlist.some((el) => el.title === data.title) ? true : false,
+  };
+}
+
+export function createWatchlistData() {
+  return {
+    title: state.movie.title,
+    time: state.movie.time,
+    imdbRating: state.movie.imdbRating,
+    image: state.movie.image,
   };
 }
 
@@ -40,7 +49,6 @@ export async function loadSearchMovies(input) {
     );
     const data = await promise.json();
     state.search.results = data.results;
-    console.log(state.search.results);
   } catch (err) {
     console.error(err);
   }
@@ -52,9 +60,7 @@ export async function loadMovie(id) {
       `https://imdb-api.com/en/API/Title/${KEY}/${id}`
     );
     const data = await promise.json();
-    console.log(data);
     state.movie = createMovieData(data);
-    console.log(state.movie);
   } catch (err) {
     console.error(err);
   }
@@ -65,4 +71,13 @@ export function getPage() {
     (state.search.page - 1) * state.search.resultsPerPage,
     state.search.page * state.search.resultsPerPage
   );
+}
+
+export function saveData(type) {
+  localStorage.setItem(type, JSON.stringify(state[type]));
+}
+
+export function getData(type) {
+  const storage = localStorage.getItem(type);
+  if (storage) state[type] = JSON.parse(storage);
 }
