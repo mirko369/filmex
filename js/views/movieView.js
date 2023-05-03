@@ -1,5 +1,6 @@
 class MovieView {
   _parentEl = document.querySelector(".movie-box");
+  _errMsg = "Sorry could not find movie you were looking for please try again";
 
   _generateMarkup(data) {
     let genre = "";
@@ -93,8 +94,16 @@ class MovieView {
   }
 
   renderMovie(data) {
-    this._parentEl.innerHTML = "";
+    this._clear();
     this._parentEl.insertAdjacentHTML("afterbegin", this._generateMarkup(data));
+  }
+
+  renderError() {
+    this._clear();
+    this._parentEl.insertAdjacentHTML(
+      "afterbegin",
+      `<p class="error-message">${this._errMsg}</p>`
+    );
   }
 
   addHandlerLike(handler) {
@@ -111,6 +120,10 @@ class MovieView {
         document.querySelector(".icon-bookmark").classList.toggle("watch");
         handler();
       });
+  }
+
+  _clear() {
+    this._parentEl.innerHTML = "";
   }
 }
 

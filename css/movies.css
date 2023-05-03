@@ -50,6 +50,15 @@ body {
 
 .movie-box {
   border: 1px solid #dee2e6;
+  position: relative;
+}
+
+.error-message {
+  font-size: 2.4rem;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
 }
 
 .movies-form {

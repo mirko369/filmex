@@ -27,6 +27,7 @@ class ResultsView {
   addHandlerResults(handler) {
     this._parentEl.addEventListener("click", function (e) {
       const btn = e.target.closest(".movie-result");
+      if (!btn) return;
       handler(btn.dataset.id);
     });
   }

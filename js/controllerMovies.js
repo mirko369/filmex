@@ -6,6 +6,7 @@ import {
   saveData,
   getData,
   createWatchlistData,
+  createLikeData,
 } from "./model.js";
 import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
@@ -19,14 +20,20 @@ async function controlSearch() {
     paginationView.renderPagination(state.search.page);
   } catch (err) {
     console.error(err);
+    movieView.renderError();
   }
 }
 
 async function controlResults(id) {
-  await loadMovie(id);
-  movieView.renderMovie(state.movie);
-  movieView.addHandlerLike(controlLikeBtn);
-  movieView.addHandlerWatchlist(controlWatchlistBtn);
+  try {
+    await loadMovie(id);
+    movieView.renderMovie(state.movie);
+    movieView.addHandlerLike(controlLikeBtn);
+    movieView.addHandlerWatchlist(controlWatchlistBtn);
+  } catch (err) {
+    console.error(err);
+    movieView.renderError();
+  }
 }
 
 function controlPagination(page) {
@@ -36,7 +43,7 @@ function controlPagination(page) {
 }
 
 function controlLikeBtn() {
-  if (!state.movie.like) state.likes.push(state.movie);
+  if (!state.movie.like) state.likes.push(createLikeData());
   if (state.movie.like) {
     const index = state.likes.findIndex((el) => el.title === state.movie.title);
     state.likes.splice(index, 1);
@@ -46,7 +53,8 @@ function controlLikeBtn() {
 }
 
 function controlWatchlistBtn() {
-  if (!state.movie.watch) state.watchlist.push(createWatchlistData());
+  if (!state.movie.watch)
+    state.watchlist.push(createWatchlistData(state.movie));
   if (state.movie.watch) {
     const index = state.watchlist.findIndex(
       (el) => el.title === state.movie.title
