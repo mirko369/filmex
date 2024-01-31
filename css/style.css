@@ -96,6 +96,16 @@ body {
   }
 }
 
+/* 1088px */
+@media (max-width: 68em) {
+  .header {
+    padding-bottom: 3.2rem;
+  }
+  html {
+    font-size: 50%;
+  }
+}
+
 /* 656px */
 @media (max-width: 41em) {
   .nav {

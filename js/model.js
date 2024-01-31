@@ -114,15 +114,17 @@ export async function loadDiscoverMovie(genre, keyword) {
 export async function discoverMovies() {
   if (state.likes.length < 1) return;
   state.discover = [];
-  // for (let i = 0; i < 3; i++) {
-  const keywordMovie = state.likes[randomNum(state.likes.length - 1)].keywords;
-  const keyword = keywordMovie[randomNum(keywordMovie.length - 1)];
-  const genreMovie = state.likes[randomNum(state.likes.length - 1)].genres;
-  const genre = genreMovie[randomNum(genreMovie.length - 1)];
-  await loadDiscoverMovie(genre, keyword);
-  const data = state.search.results[randomNum(state.search.results.length - 1)];
-  state.discover.push(createDiscoverData(data));
-  // }
+  for (let i = 0; i < 3; i++) {
+    const keywordMovie =
+      state.likes[randomNum(state.likes.length - 1)].keywords;
+    const keyword = keywordMovie[randomNum(keywordMovie.length - 1)];
+    const genreMovie = state.likes[randomNum(state.likes.length - 1)].genres;
+    const genre = genreMovie[randomNum(genreMovie.length - 1)];
+    await loadDiscoverMovie(genre, keyword);
+    const data =
+      state.search.results[randomNum(state.search.results.length - 1)];
+    state.discover.push(createDiscoverData(data));
+  }
 }
 
 export function getPage() {

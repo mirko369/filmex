@@ -15,6 +15,7 @@ import movieView from "./views/movieView.js";
 
 async function controlSearch() {
   try {
+    resultsView.renderSpinner();
     await loadSearchMovies(searchView.getInput());
     resultsView.renderResults(getPage());
     paginationView.renderPagination(state.search.page);
@@ -26,6 +27,7 @@ async function controlSearch() {
 
 async function controlResults(id) {
   try {
+    movieView.renderSpinner();
     await loadMovie(id);
     movieView.renderMovie(state.movie);
     movieView.addHandlerLike(controlLikeBtn);

@@ -46,6 +46,14 @@ class DiscoverView {
     );
   }
 
+  renderSpinner() {
+    this._clear();
+    this._parentEl.insertAdjacentHTML(
+      "afterbegin",
+      `        <span class="loader"></span>`
+    );
+  }
+
   addHandlerWatchlist(handler) {
     document.querySelectorAll(".watchlist-btn").forEach((el) => {
       el.addEventListener("click", function (e) {

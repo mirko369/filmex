@@ -79,6 +79,10 @@ body {
   opacity: 80%;
 }
 
+.results-box {
+  position: relative;
+}
+
 .result-img {
   width: 35%;
   height: auto;

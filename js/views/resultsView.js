@@ -18,10 +18,18 @@ class ResultsView {
   }
 
   renderResults(data) {
-    this._parentEl.innerHTML = "";
+    this._clear();
     data.forEach((el) => {
       this._parentEl.insertAdjacentHTML("beforeend", this._generateMarkup(el));
     });
+  }
+
+  renderSpinner() {
+    this._clear();
+    this._parentEl.insertAdjacentHTML(
+      "afterbegin",
+      `        <span class="loader"></span>`
+    );
   }
 
   addHandlerResults(handler) {
@@ -30,6 +38,10 @@ class ResultsView {
       if (!btn) return;
       handler(btn.dataset.id);
     });
+  }
+
+  _clear() {
+    this._parentEl.innerHTML = "";
   }
 }
 

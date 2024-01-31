@@ -7,7 +7,7 @@ body {
 
 .background-img {
   background-color: #741536;
-  height: 100vh;
+  height: 100%;
   background-image: linear-gradient(to top, #681331 0%, #000 100%);
 }
 

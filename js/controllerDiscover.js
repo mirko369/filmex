@@ -9,6 +9,7 @@ import discoverView from "./views/discoverView.js";
 
 async function controlDiscover() {
   try {
+    discoverView.renderSpinner();
     await discoverMovies();
     discoverView.renderDiscover(state.discover);
     discoverView.addHandlerWatchlist(controlWatchlistBtn);

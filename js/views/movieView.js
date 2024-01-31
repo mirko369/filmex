@@ -106,6 +106,14 @@ class MovieView {
     );
   }
 
+  renderSpinner() {
+    this._clear();
+    this._parentEl.insertAdjacentHTML(
+      "afterbegin",
+      `        <span class="loader"></span>`
+    );
+  }
+
   addHandlerLike(handler) {
     document.querySelector(".like-btn").addEventListener("click", function () {
       document.querySelector(".icon-heart").classList.toggle("liked");
